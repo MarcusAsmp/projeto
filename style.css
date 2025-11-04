@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*faz com que o padding e a borda não aumentem o tamanho do elemento*/
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.2);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; //cobre a tela inteira
+  */
+
+  /*background: color image repeat position/size (atalho do código de cima)*/
+  background: var(--bg-url) no-repeat top center/cover;
+}
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  border: 1px solid red; /* só para ver o tamanho do container*/
+  width: 360px;
+  margin: auto;
+  margin-top: 56px; /*espaçamento interno pode ser o padding-top*/
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  /* margin: 56px auto auto auto*/
+  padding: 0 24px; /*espaçamento interno, 0 em cima e embaixo, 24px nos lados*/
+}
+
+/*profile*/
+#profile {
+  text-align: center;
+  padding: 24px; /*espaçamento interno*/
+}
+#profile img {
+  /*display: block;
+  margin: auto; serve para centralizar sem o "profile" igual tá ai em cima (maneira 1 e 2)*/
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500; /*É como se fosse o "semibold" ou o negrito, cor mais escura*/
+  font-size: 16px; /*tamanho da fonte, por padrão já é esse tamanho*/
+  line-height: 24px; /*espaçamento entre linhas, por padrão já é esse tamanho*/
+  padding: 8px;
+}
+
+/*Switch*/
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto; /*centraliza o elemento horizontalmente*/
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /*tira o elemento do fluxo normal da página*/
+  top: 50%;
+  right: 0;
+  z-index: 1; /*coloca o elemento na frente dos outros*/
+  transform: translateY(-50%); /*move o elemento para cima 50% do seu tamanho*/
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px); /*desfoca o que está atrás do elemento*/
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px; /*deixa o elemento totalmente arredondado*/
+}
+
+.light #switch button {
+  right: auto;
+  left: initial;
+}
+
+/*links*/
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /*espaçamento entre os itens*/
+  padding: 24px 0; /*espaçamento interno, 24px em cima e embaixo, 0 nos lados*/
+}
+
+ul li a {
+  display: flex; /*flexbox*/
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px; /*16px em cima e embaixo, 24px nos lados*/
+  background: var(--surface-color); /*cor de fundo com opacidade*/
+  border: 1px solid var(--stroke-color); /*borda com opacidade*/
+  border-radius: 8px;
+  backdrop-filter: blur(10px); /*desfoca o que está atrás do elemento*/
+  -webkit-backdrop-filter: blur(4px); /*para funcionar no safari*/
+  text-decoration: none; /*tira o sublinhado do link*/
+  font-weight: 500;
+
+  transition: background 0.2s; /*transição suave para todas as propriedades que mudam*/
+}
+
+/* pseudo-selector */
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid (--text-color);
+}
+
+/* social links */
+#social-links {
+  display: flex;
+  padding: 24px 0; /*espaçamento interno, 24px em cima e embaixo, 0 nos lados*/
+  font-size: 24px; /*tamanho dos ícones*/
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  transition: background 0.2s; /*transição suave para todas as propriedades que mudam*/
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
